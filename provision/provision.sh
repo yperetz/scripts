@@ -98,6 +98,7 @@ for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|\.gitmodules|.*.m
 cd ~
 
 rm -rf ~/.config/xfce4
+rm -rf ~/.config/plank
 
 cd dotfiles/.config
 for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|\.gitmodules|.*.md|\.config$' ) ; do
