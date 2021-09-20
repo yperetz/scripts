@@ -3,12 +3,16 @@
 sudo apt update
 sudo apt upgrade -y
 
-for i in python3 python python3-pip exa zsh snapd gdebi-core wget htop python3-neovim git pynvim ruby-full fzf neofetch terminator plank; do
+for i in python3 python python3-pip exa zsh snapd gdebi-core wget htop python3-neovim git pynvim ruby-full fzf neofetch terminator plank conky-all; do
     sudo apt install -y $i
 done
 
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt-get update && sudo apt-get install spotify-client
+
+
 sudo snap install pycharm-professional --classic
-sudo snap install spotify
 
 sudo gem install neovim
 
@@ -48,9 +52,12 @@ sudo gdebi /tmp/discord.deb --n
 sudo gdebi /tmp/zoom_amd64.deb --n
 
 # ulauncher
+mkdir ~/.config/autostart
 wget -O /tmp/ul.deb "https://github.com/Ulauncher/Ulauncher/releases/download/5.13.0/ulauncher_5.13.0_all.deb"
 sudo gdebi /tmp/ul.deb --n
 cp /usr/share/applications/ulauncher.desktop ~/.config/autostart/
+# same for plank
+cp /usr/share/applications/plank.desktop ~/.config/autostart/
 
 # install neovim vim plug
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -76,7 +83,7 @@ fi
 ###########################################################################
 
 # make python3 default
-sudo update-alternatives --install /usr/bin/python /usr/bin/python3 1
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
 # make zsh default
 sudo chsh -s $(which zsh) $USER
