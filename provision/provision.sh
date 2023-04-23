@@ -3,7 +3,7 @@
 sudo apt update
 sudo apt upgrade -y
 
-for i in python3 python python3-pip exa zsh snapd gdebi-core wget htop python3-neovim git pynvim ruby-full fzf neofetch terminator plank conky-all; do
+for i in python3 python python3-pip exa zsh snapd gdebi-core wget htop python3-neovim git pynvim ruby-full fzf neofetch terminator plank conky-all bat curl pulse-audio-equalizer vlc; do
     sudo apt install -y $i
 done
 
