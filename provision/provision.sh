@@ -11,7 +11,6 @@ curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt-get update && sudo apt-get install spotify-client
 
-
 sudo snap install pycharm-professional --classic
 
 sudo gem install neovim
@@ -102,6 +101,7 @@ for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|\.gitmodules|.*.m
     # Silently ignore errors here because the files may already exist
     ln -sv "$PWD/$file" "$HOME" || true
   done
+sudo ln -sv "$PWD/logid.cfg" "/etc/" || true
 cd ~
 
 rm -rf ~/.config/xfce4
@@ -111,6 +111,4 @@ cd dotfiles/.config
 for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|\.gitmodules|.*.md|\.config$' ) ; do
     # Silently ignore errors here because the files may already exist
     ln -sv "$PWD/$file" "$HOME/.config" || true
-  done
-cd ~
 
